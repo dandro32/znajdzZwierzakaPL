@@ -19,8 +19,8 @@ import { IRoute, Routes } from "../constants/Routes";
 import useColorScheme from "../hooks/useColorScheme";
 import ModalScreen from "../screens/ModalScreen";
 import NotFoundScreen from "../screens/NotFoundScreen";
-import TabOneScreen from "../screens/TabOneScreen";
-import TabTwoScreen from "../screens/TabTwoScreen";
+import TabOneScreen from "../screens/LostScreen";
+import TabTwoScreen from "../screens/FoundScreen";
 import {
   RootStackParamList,
   RootTabParamList,
@@ -80,6 +80,7 @@ function BottomTabNavigator() {
 
   const renderBottomTabs = Routes.map((route: IRoute) => (
     <BottomTab.Screen
+      key={`route-${route.id}`}
       name={route.id}
       component={route.component}
       options={({ navigation }: RootTabScreenProps<any>) => ({
@@ -95,7 +96,7 @@ function BottomTabNavigator() {
             })}
           >
             <FontAwesome5
-              name="info-circle"
+              name="user-circle"
               size={25}
               color={Colors[colorScheme].text}
               style={{ marginRight: 15 }}

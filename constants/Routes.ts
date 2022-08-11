@@ -2,8 +2,9 @@ import { ComponentType } from "react";
 import { RootTabParamList } from "../types";
 import { FontAwesome5 } from "@expo/vector-icons";
 
-import TabOneScreen from "../screens/TabOneScreen";
-import TabTwoScreen from "../screens/TabTwoScreen";
+import LostScreen from "../screens/LostScreen";
+import FoundScreen from "../screens/FoundScreen";
+import MapScreen from "../screens/MapScreen";
 
 export interface IRoute {
   component: ComponentType<any>;
@@ -14,15 +15,21 @@ export interface IRoute {
 
 export const Routes: IRoute[] = [
   {
-    component: TabOneScreen,
-    fontIconName: "dog",
+    component: MapScreen,
+    fontIconName: "map-marked-alt",
     id: "TabOne",
+    title: "Mapa",
+  },
+  {
+    component: LostScreen,
+    fontIconName: "dog",
+    id: "TabTwo",
     title: "Zgubiłem zwierzaka",
   },
   {
-    component: TabTwoScreen,
+    component: FoundScreen,
     fontIconName: "angellist",
-    id: "TabTwo",
+    id: "TabThree",
     title: "Znalazłem zwierzaka",
   },
 ];
