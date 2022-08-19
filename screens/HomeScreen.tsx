@@ -1,42 +1,37 @@
-import { Dimensions, StyleSheet, TouchableOpacity } from "react-native";
+import { StyleSheet, TouchableOpacity } from "react-native";
 import { Video, ResizeMode } from "expo-av";
-import { useEffect, useRef } from "react";
 
 import { Text, View } from "../components/Themed";
 import { RootStackScreenProps } from "../types";
-
-const { height } = Dimensions.get("window");
+import { useAssets } from "expo-asset";
 
 export default function HomeScreen({
   navigation,
 }: RootStackScreenProps<"Home">) {
-  const video = useRef<any>(null);
-
-  useEffect(() => {
-    video?.current?.playAsync();
-  }, []);
+  const [assets, error] = useAssets([require("../assets/video/intro_ZZ.mp4")]);
+  const goToRoot = () => {
+    navigation.replace("Root");
+  };
 
   return (
     <View style={styles.container}>
       <Video
-        ref={video}
-        style={styles.backgroundVideo}
         source={{
-          uri: "./../assets/video/intro_ZZ.mp4",
+          uri: assets ? assets[0]?.uri : "",
         }}
-        useNativeControls
-        isLooping
-        resizeMode={ResizeMode.STRETCH}
-        onPlaybackStatusUpdate={(status) => setStatus(() => status)}
+        style={styles.backgroundVideo}
+        rate={1}
+        shouldPlay={true}
+        isLooping={true}
+        volume={1}
+        resizeMode={ResizeMode.COVER}
       />
-
-      <Text style={styles.title}>Welcome trararar</Text>
-      <TouchableOpacity
-        onPress={() => navigation.replace("Root")}
-        style={styles.link}
-      >
-        <Text style={styles.linkText}>Go to home screen!</Text>
-      </TouchableOpacity>
+      <View style={styles.buttonsWrapper}>
+        <Text style={styles.title}>Witaj w aplikacji Znajdź Zwierzaka</Text>
+        <TouchableOpacity onPress={goToRoot} style={styles.link}>
+          <Text style={styles.linkText}>Go to home screen!</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
@@ -44,18 +39,28 @@ export default function HomeScreen({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: "transparent",
+  },
+  loginContainer: {
     alignItems: "center",
+    flexGrow: 1,
     justifyContent: "center",
-    padding: 20,
   },
   backgroundVideo: {
-    height: height,
     position: "absolute",
     top: 0,
     left: 0,
-    alignItems: "stretch",
     bottom: 0,
     right: 0,
+  },
+  buttonsWrapper: {
+    display: "flex",
+    height: "100%",
+    justifyContent: "center",
+    padding: 20,
+    alignItems: "center",
+    flexDirection: "column",
+    backgroundColor: "transparent",
   },
   title: {
     fontSize: 20,

@@ -19,8 +19,6 @@ import { IRoute, Routes } from "../constants/Routes";
 import useColorScheme from "../hooks/useColorScheme";
 import ModalScreen from "../screens/ModalScreen";
 import NotFoundScreen from "../screens/NotFoundScreen";
-import TabOneScreen from "../screens/LostScreen";
-import TabTwoScreen from "../screens/FoundScreen";
 import {
   RootStackParamList,
   RootTabParamList,
