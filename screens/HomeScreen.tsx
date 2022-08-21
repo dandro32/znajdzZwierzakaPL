@@ -4,12 +4,20 @@ import { Video, ResizeMode } from "expo-av";
 import { Text, View } from "../components/Themed";
 import { RootStackScreenProps } from "../types";
 import { useAssets } from "expo-asset";
+import LoginForm from "../components/loginForm";
+import HorizontalRule from "../components/horizontalRule";
 
 export default function HomeScreen({
   navigation,
 }: RootStackScreenProps<"Home">) {
   const [assets, error] = useAssets([require("../assets/video/intro_ZZ.mp4")]);
   const goToRoot = () => {
+    navigation.replace("Root");
+  };
+  const loginAsGuest = () => {
+    navigation.replace("Root");
+  };
+  const register = () => {
     navigation.replace("Root");
   };
 
@@ -27,9 +35,16 @@ export default function HomeScreen({
         resizeMode={ResizeMode.COVER}
       />
       <View style={styles.buttonsWrapper}>
-        <Text style={styles.title}>Witaj w aplikacji Znajdź Zwierzaka</Text>
-        <TouchableOpacity onPress={goToRoot} style={styles.link}>
-          <Text style={styles.linkText}>Go to home screen!</Text>
+        <Text style={styles.title}>Znajdź Zwierzaka</Text>
+        <LoginForm goToRoot={goToRoot} />
+        <Text style={styles.noAccount}>Nie masz konta?</Text>
+        <TouchableOpacity onPress={register} style={styles.link}>
+          <Text style={styles.linkText}>Zarejestruj się</Text>
+        </TouchableOpacity>
+        <HorizontalRule text="albo" />
+
+        <TouchableOpacity onPress={loginAsGuest} style={styles.link}>
+          <Text style={styles.linkText}>Uzyj jako gość</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -63,15 +78,24 @@ const styles = StyleSheet.create({
     backgroundColor: "transparent",
   },
   title: {
-    fontSize: 20,
+    fontSize: 26,
     fontWeight: "bold",
+    textAlign: "center",
+    color: "#fff",
+  },
+  noAccount: {
+    marginTop: 10,
+    fontSize: 14,
+    textAlign: "center",
+    color: "#fff",
   },
   link: {
-    marginTop: 15,
+    marginTop: 5,
     paddingVertical: 15,
   },
   linkText: {
-    fontSize: 14,
-    color: "#2e78b7",
+    fontSize: 18,
+    fontWeight: "bold",
+    color: "#77b2ed",
   },
 });
