@@ -15,7 +15,7 @@ import * as React from "react";
 import { ColorSchemeName, Pressable } from "react-native";
 
 import Colors from "../constants/Colors";
-import { IRoute, Routes } from "../constants/Routes";
+import { IRoute, TabRoutes } from "../constants/Routes";
 import useColorScheme from "../hooks/useColorScheme";
 import ModalScreen from "../screens/ModalScreen";
 import NotFoundScreen from "../screens/NotFoundScreen";
@@ -26,6 +26,7 @@ import {
 } from "../types";
 import LinkingConfiguration from "./LinkingConfiguration";
 import HomeScreen from "../screens/HomeScreen";
+import RegisterScreen from "../screens/RegisterScreen";
 
 export default function Navigation({
   colorScheme,
@@ -57,15 +58,21 @@ function RootNavigator() {
         options={{ title: "Witaj!" }}
       />
       <Stack.Screen
-        name="Root"
+        name="Tabs"
         component={BottomTabNavigator}
         options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Register"
+        component={RegisterScreen}
+        options={{ title: "Zarejestruj się!" }}
       />
       <Stack.Screen
         name="NotFound"
         component={NotFoundScreen}
         options={{ title: "Ooops!" }}
       />
+
       <Stack.Group screenOptions={{ presentation: "modal" }}>
         <Stack.Screen name="Modal" component={ModalScreen} />
       </Stack.Group>
@@ -82,7 +89,7 @@ const BottomTab = createBottomTabNavigator<RootTabParamList>();
 function BottomTabNavigator() {
   const colorScheme = useColorScheme();
 
-  const renderBottomTabs = Routes.map((route: IRoute) => (
+  const renderBottomTabs = TabRoutes.map((route: IRoute) => (
     <BottomTab.Screen
       key={`route-${route.id}`}
       name={route.id}

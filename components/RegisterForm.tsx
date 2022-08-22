@@ -7,16 +7,18 @@ import {
   Text,
 } from "react-native";
 
-interface ILoginForm {
+interface IRegisterForm {
   goToTabs: () => void;
 }
 
-const LoginForm: FC<ILoginForm> = ({ goToTabs }) => {
-  const [login, setLogin] = useState("");
+const RegisterForm: FC<IRegisterForm> = ({ goToTabs }) => {
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [passwordConfirmation, setPasswordConfirmation] = useState("");
 
-  const onLogin = () => {
-    console.log("login");
+  const onRegister = () => {
+    console.log("register");
     goToTabs();
   };
 
@@ -24,8 +26,16 @@ const LoginForm: FC<ILoginForm> = ({ goToTabs }) => {
     <View>
       <TextInput
         style={styles.input}
-        onChangeText={setLogin}
-        value={login}
+        onChangeText={setUsername}
+        value={username}
+        placeholder="Nazwa uzytkownika"
+        autoComplete="username"
+        placeholderTextColor="#fff"
+      />
+      <TextInput
+        style={styles.input}
+        onChangeText={setEmail}
+        value={email}
         placeholder="E-mail"
         keyboardType="email-address"
         autoComplete="email"
@@ -41,8 +51,19 @@ const LoginForm: FC<ILoginForm> = ({ goToTabs }) => {
         secureTextEntry={true}
         placeholderTextColor="#fff"
       />
-      <TouchableHighlight onPress={onLogin} style={styles.button}>
-        <Text style={styles.buttonText}>Zaloguj się</Text>
+      <TextInput
+        style={styles.input}
+        onChangeText={setPasswordConfirmation}
+        value={passwordConfirmation}
+        placeholder="Powtórz hasło"
+        autoComplete="password"
+        keyboardType="numeric"
+        secureTextEntry={true}
+        placeholderTextColor="#fff"
+      />
+
+      <TouchableHighlight onPress={onRegister} style={styles.button}>
+        <Text style={styles.buttonText}>Zarejestruj się</Text>
       </TouchableHighlight>
     </View>
   );
@@ -76,4 +97,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default LoginForm;
+export default RegisterForm;

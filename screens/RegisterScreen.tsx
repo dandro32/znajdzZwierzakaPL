@@ -6,46 +6,21 @@ import { RootStackScreenProps } from "../types";
 import { useAssets } from "expo-asset";
 import LoginForm from "../components/LoginForm";
 import HorizontalRule from "../components/HorizontalRule";
+import RegisterForm from "../components/RegisterForm";
+import Colors from "../constants/Colors";
 
-export default function HomeScreen({
+export default function RegisterScreen({
   navigation,
-}: RootStackScreenProps<"Home">) {
-  const [assets, error] = useAssets([require("../assets/video/intro_ZZ.mp4")]);
+}: RootStackScreenProps<"Register">) {
   const goToTabs = () => {
     navigation.replace("Tabs");
-  };
-  const loginAsGuest = () => {
-    navigation.replace("Tabs");
-  };
-  const register = () => {
-    navigation.replace("Register");
   };
 
   return (
     <View style={styles.container}>
-      <Video
-        source={{
-          uri: assets ? assets[0]?.uri : "",
-        }}
-        style={styles.backgroundVideo}
-        rate={1}
-        shouldPlay={true}
-        isLooping={true}
-        volume={1}
-        resizeMode={ResizeMode.COVER}
-      />
       <View style={styles.buttonsWrapper}>
-        <Text style={styles.title}>Znajdź Zwierzaka</Text>
-        <LoginForm goToTabs={goToTabs} />
-        <Text style={styles.noAccount}>Nie masz konta?</Text>
-        <TouchableOpacity onPress={register} style={styles.link}>
-          <Text style={styles.linkText}>Zarejestruj się</Text>
-        </TouchableOpacity>
-        <HorizontalRule text="albo" />
-
-        <TouchableOpacity onPress={loginAsGuest} style={styles.link}>
-          <Text style={styles.linkText}>Uzyj jako gość</Text>
-        </TouchableOpacity>
+        <Text style={styles.title}>Załóz konto</Text>
+        <RegisterForm goToTabs={goToTabs} />
       </View>
     </View>
   );
@@ -54,7 +29,7 @@ export default function HomeScreen({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "transparent",
+    backgroundColor: Colors.background,
   },
   loginContainer: {
     alignItems: "center",
@@ -81,7 +56,7 @@ const styles = StyleSheet.create({
     fontSize: 26,
     fontWeight: "bold",
     textAlign: "center",
-    color: "#fff",
+    color: Colors.title.defaultTitle,
   },
   noAccount: {
     marginTop: 10,

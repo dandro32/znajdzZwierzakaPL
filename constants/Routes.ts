@@ -13,7 +13,7 @@ export interface IRoute {
   title: string;
 }
 
-export const Routes: IRoute[] = [
+export const TabRoutes: IRoute[] = [
   {
     component: MapScreen,
     fontIconName: "map-marked-alt",
