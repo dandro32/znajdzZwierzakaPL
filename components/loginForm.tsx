@@ -6,6 +6,7 @@ import {
   TouchableHighlight,
   Text,
 } from "react-native";
+import Colors from "../constants/Colors";
 
 interface ILoginForm {
   goToTabs: () => void;
@@ -29,7 +30,7 @@ const LoginForm: FC<ILoginForm> = ({ goToTabs }) => {
         placeholder="E-mail"
         keyboardType="email-address"
         autoComplete="email"
-        placeholderTextColor="#fff"
+        placeholderTextColor={Colors.text}
       />
       <TextInput
         style={styles.input}
@@ -39,7 +40,7 @@ const LoginForm: FC<ILoginForm> = ({ goToTabs }) => {
         autoComplete="password"
         keyboardType="numeric"
         secureTextEntry={true}
-        placeholderTextColor="#fff"
+        placeholderTextColor={Colors.text}
       />
       <TouchableHighlight onPress={onLogin} style={styles.button}>
         <Text style={styles.buttonText}>Zaloguj się</Text>
@@ -56,15 +57,15 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 10,
     borderWidth: 2,
-    borderColor: "#fff",
-    color: "#fff",
+    borderColor: Colors.border,
+    color: Colors.text,
   },
   button: {
     width: 250,
     backgroundColor: "transparent",
     padding: 15,
     borderWidth: 1,
-    borderColor: "#fff",
+    borderColor: Colors.border,
     borderRadius: 25,
   },
   buttonText: {
@@ -72,7 +73,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontWeight: "bold",
     letterSpacing: 3,
-    color: "#fff",
+    color: Colors.text,
   },
 });
 

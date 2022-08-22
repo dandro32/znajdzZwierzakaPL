@@ -49,28 +49,35 @@ export default function Navigation({
  */
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
+const headerOptions = {
+  headerStyle: {
+    backgroundColor: Colors.navigatorBackground,
+  },
+  headerTintColor: Colors.text,
+};
+
 function RootNavigator() {
   return (
     <Stack.Navigator>
       <Stack.Screen
         name="Home"
         component={HomeScreen}
-        options={{ title: "Witaj!" }}
+        options={{ title: "Witaj!", ...headerOptions }}
       />
       <Stack.Screen
         name="Tabs"
         component={BottomTabNavigator}
-        options={{ headerShown: false }}
+        options={{ title: "Lost and found", ...headerOptions }}
       />
       <Stack.Screen
         name="Register"
         component={RegisterScreen}
-        options={{ title: "Zarejestruj się!" }}
+        options={{ title: "Zarejestruj się!", ...headerOptions }}
       />
       <Stack.Screen
         name="NotFound"
         component={NotFoundScreen}
-        options={{ title: "Ooops!" }}
+        options={{ title: "Ooops!", ...headerOptions }}
       />
 
       <Stack.Group screenOptions={{ presentation: "modal" }}>

@@ -6,6 +6,7 @@ import { RootStackScreenProps } from "../types";
 import { useAssets } from "expo-asset";
 import LoginForm from "../components/LoginForm";
 import HorizontalRule from "../components/HorizontalRule";
+import Colors from "../constants/Colors";
 
 export default function HomeScreen({
   navigation,
@@ -81,13 +82,13 @@ const styles = StyleSheet.create({
     fontSize: 26,
     fontWeight: "bold",
     textAlign: "center",
-    color: "#fff",
+    color: Colors.text,
   },
   noAccount: {
     marginTop: 10,
     fontSize: 14,
     textAlign: "center",
-    color: "#fff",
+    color: Colors.text,
   },
   link: {
     marginTop: 5,
@@ -96,6 +97,6 @@ const styles = StyleSheet.create({
   linkText: {
     fontSize: 18,
     fontWeight: "bold",
-    color: "#77b2ed",
+    color: Colors.link,
   },
 });

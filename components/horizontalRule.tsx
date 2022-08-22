@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { View, Text, StyleSheet } from "react-native";
+import Colors from "../constants/Colors";
 
 interface IHorizontalRule {
   text: string;
@@ -20,7 +21,7 @@ const HorizontalRule: FC<IHorizontalRule> = ({ text, color }) => {
   );
 };
 
-const styles = (color: string = "#fff") =>
+const styles = (color: string = Colors.border) =>
   StyleSheet.create({
     wrapper: {
       flexDirection: "row",

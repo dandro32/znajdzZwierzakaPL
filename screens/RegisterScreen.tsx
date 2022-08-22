@@ -31,18 +31,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: Colors.background,
   },
-  loginContainer: {
-    alignItems: "center",
-    flexGrow: 1,
-    justifyContent: "center",
-  },
-  backgroundVideo: {
-    position: "absolute",
-    top: 0,
-    left: 0,
-    bottom: 0,
-    right: 0,
-  },
   buttonsWrapper: {
     display: "flex",
     height: "100%",
@@ -56,21 +44,6 @@ const styles = StyleSheet.create({
     fontSize: 26,
     fontWeight: "bold",
     textAlign: "center",
-    color: Colors.title.defaultTitle,
-  },
-  noAccount: {
-    marginTop: 10,
-    fontSize: 14,
-    textAlign: "center",
-    color: "#fff",
-  },
-  link: {
-    marginTop: 5,
-    paddingVertical: 15,
-  },
-  linkText: {
-    fontSize: 18,
-    fontWeight: "bold",
-    color: "#77b2ed",
+    color: Colors.title,
   },
 });

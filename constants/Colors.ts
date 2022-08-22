@@ -3,12 +3,13 @@ const tintColorDark = "#fff";
 const grey = "#B0B0B0";
 const white = "#fff";
 const pink = "#C765B1";
+const linkBlue = "#77b2ed";
 
 export default {
   light: {
-    text: "#000",
-    background: "#fff",
-    tint: tintColorLight,
+    text: white,
+    background: grey,
+    tint: pink,
     tabIconDefault: "#ccc",
     tabIconSelected: tintColorLight,
   },
@@ -20,8 +21,9 @@ export default {
     tabIconSelected: tintColorDark,
   },
   background: grey,
-  title: {
-    defaultTitle: pink,
-    whiteTitle: white,
-  },
+  title: white,
+  text: white,
+  border: white,
+  link: linkBlue,
+  navigatorBackground: pink,
 };
