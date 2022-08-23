@@ -7,7 +7,7 @@ const linkBlue = "#77b2ed";
 
 export default {
   light: {
-    text: white,
+    text: pink,
     background: grey,
     tint: pink,
     tabIconDefault: "#ccc",

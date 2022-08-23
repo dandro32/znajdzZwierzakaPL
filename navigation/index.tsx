@@ -17,7 +17,7 @@ import { ColorSchemeName, Pressable } from "react-native";
 import Colors from "../constants/Colors";
 import { IRoute, TabRoutes } from "../constants/Routes";
 import useColorScheme from "../hooks/useColorScheme";
-import ModalScreen from "../screens/ModalScreen";
+import OptionsScreen from "../screens/OptionsScreen";
 import NotFoundScreen from "../screens/NotFoundScreen";
 import {
   RootStackParamList,
@@ -67,7 +67,7 @@ function RootNavigator() {
       <Stack.Screen
         name="Tabs"
         component={BottomTabNavigator}
-        options={{ title: "Lost and found", ...headerOptions }}
+        options={{ headerShown: false }}
       />
       <Stack.Screen
         name="Register"
@@ -81,7 +81,7 @@ function RootNavigator() {
       />
 
       <Stack.Group screenOptions={{ presentation: "modal" }}>
-        <Stack.Screen name="Modal" component={ModalScreen} />
+        <Stack.Screen name="Options" component={OptionsScreen} />
       </Stack.Group>
     </Stack.Navigator>
   );
@@ -108,7 +108,7 @@ function BottomTabNavigator() {
         ),
         headerRight: () => (
           <Pressable
-            onPress={() => navigation.navigate("Modal")}
+            onPress={() => navigation.navigate("Options")}
             style={({ pressed }) => ({
               opacity: pressed ? 0.5 : 1,
             })}
