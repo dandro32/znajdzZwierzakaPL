@@ -18,7 +18,7 @@ export const TabRoutes: IRoute[] = [
     component: MapScreen,
     fontIconName: "map-marked-alt",
     id: "TabOne",
-    title: "Mapa",
+    title: "Sprawdź w swojej okolicy",
   },
   {
     component: LostScreen,
