@@ -45,8 +45,6 @@ export default function MapScreen() {
     getLocation();
   }, []);
 
-  console.log(position);
-
   return (
     <View style={styles.container}>
       <MapView
