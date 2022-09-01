@@ -6,8 +6,25 @@ import {
   TouchableHighlight,
   Text,
 } from "react-native";
+import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
 import Colors from "../constants/Colors";
 import Dropdown from "./Dropdown";
+import HorizontalRule from "./HorizontalRule";
+
+const mockedOptions = [
+  {
+    label: "label1",
+    value: "value1",
+  },
+  {
+    label: "label2",
+    value: "value2",
+  },
+  {
+    label: "label3",
+    value: "value4",
+  },
+];
 
 const AnimalForm: FC = () => {
   const [title, setTitle] = useState("");
@@ -23,6 +40,11 @@ const AnimalForm: FC = () => {
     console.log("register");
   };
 
+  const onMapPress = (coordinate: any, position: any) => {
+    console.log(1111, coordinate);
+    console.log(111122, position);
+  };
+
   return (
     <View>
       <TextInput
@@ -33,16 +55,41 @@ const AnimalForm: FC = () => {
         autoComplete="name"
         placeholderTextColor={Colors.text}
       />
-      <Dropdown name="type" onChange={handleDropdown} value={dropdown} />
-      <Dropdown name="race" onChange={handleDropdown} value={dropdown} />
-      <Dropdown name="color" onChange={handleDropdown} value={dropdown} />
+      <Dropdown
+        name="type"
+        onChange={handleDropdown}
+        value={dropdown}
+        options={mockedOptions}
+      />
+      <Dropdown
+        name="race"
+        onChange={handleDropdown}
+        value={dropdown}
+        options={mockedOptions}
+      />
+      <Dropdown
+        name="color"
+        onChange={handleDropdown}
+        value={dropdown}
+        options={mockedOptions}
+      />
       <TextInput
-        style={styles.input}
+        style={styles.textArea}
         onChangeText={setAdditional}
         value={additional}
         placeholder="Dodatkowe informacje"
         placeholderTextColor={Colors.text}
         multiline
+        numberOfLines={6}
+      />
+
+      <Text style={styles.useYourLocation}>Uzyj swojej lokalizacji</Text>
+      <HorizontalRule text="albo oznacz inną" />
+      <MapView
+        provider={PROVIDER_GOOGLE}
+        showsUserLocation
+        style={styles.map}
+        onPress={onMapPress}
       />
 
       <TouchableHighlight onPress={onSubmit} style={styles.button}>
@@ -63,6 +110,16 @@ const styles = StyleSheet.create({
     borderColor: Colors.border,
     color: Colors.text,
   },
+  textArea: {
+    width: 225,
+    margin: 12,
+    padding: 10,
+    borderRadius: 10,
+    borderWidth: 2,
+    borderColor: Colors.border,
+    color: Colors.text,
+    textAlignVertical: "top",
+  },
   button: {
     width: 250,
     backgroundColor: "transparent",
@@ -77,6 +134,16 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     letterSpacing: 3,
     color: Colors.text,
+  },
+  useYourLocation: {
+    fontSize: 14,
+    textAlign: "center",
+    color: Colors.text,
+  },
+  map: {
+    marginTop: 20,
+    width: 300,
+    height: 300,
   },
 });
 

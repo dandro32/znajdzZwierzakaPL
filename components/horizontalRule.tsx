@@ -33,7 +33,7 @@ const styles = (color: string = Colors.border) =>
       backgroundColor: color,
     },
     text: {
-      width: 50,
+      minWidth: 50,
       textAlign: "center",
       color,
     },

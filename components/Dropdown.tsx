@@ -1,6 +1,6 @@
 import { Picker } from "@react-native-picker/picker";
 import { FC } from "react";
-import { StyleSheet } from "react-native";
+import { StyleSheet, View } from "react-native";
 import Colors from "../constants/Colors";
 
 export interface IOption {
@@ -21,7 +21,7 @@ const Dropdown: FC<IDropdown> = ({ name, value, options = [], onChange }) => {
       key={`dropdown-${name}-${value}`}
       label={label}
       value={value}
-      style={styles.dropdown}
+      style={styles.item}
     />
   ));
 
@@ -30,22 +30,31 @@ const Dropdown: FC<IDropdown> = ({ name, value, options = [], onChange }) => {
   };
 
   return (
-    <Picker selectedValue={value} onValueChange={handleChange}>
-      {renderItems}
-    </Picker>
+    <View style={styles.dropdown}>
+      <Picker
+        selectedValue={value}
+        onValueChange={handleChange}
+        dropdownIconColor={Colors.border}
+      >
+        {renderItems}
+      </Picker>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   dropdown: {
-    height: 40,
     width: 225,
     margin: 12,
-    padding: 10,
     borderRadius: 10,
     borderWidth: 2,
     borderColor: Colors.border,
     color: Colors.text,
+  },
+  item: {
+    color: Colors.text,
+    backgroundColor: Colors.background,
+    borderRadius: 10,
   },
 });
 
