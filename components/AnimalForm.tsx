@@ -40,9 +40,8 @@ const AnimalForm: FC = () => {
     console.log("register");
   };
 
-  const onMapPress = (coordinate: any, position: any) => {
-    console.log(1111, coordinate);
-    console.log(111122, position);
+  const onMapPress = (e: any) => {
+    console.log(e.nativeEvent.coordinate);
   };
 
   return (

@@ -6,7 +6,7 @@ import { RootTabScreenProps } from "../types";
 
 export default function LostScreen({
   navigation,
-}: RootTabScreenProps<"TabOne">) {
+}: RootTabScreenProps<"TabTwo">) {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Zgubiłem zwierzaka</Text>

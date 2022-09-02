@@ -1,9 +1,12 @@
 import { StyleSheet } from "react-native";
+import AnimalForm from "../components/AnimalForm";
 
-import EditScreenInfo from "../components/EditScreenInfo";
 import { Text, View } from "../components/Themed";
+import { RootTabScreenProps } from "../types";
 
-export default function FoundScreen() {
+export default function FoundScreen({
+  navigation,
+}: RootTabScreenProps<"TabThree">) {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Znalazłem zwierzaka</Text>
@@ -12,7 +15,7 @@ export default function FoundScreen() {
         lightColor="#eee"
         darkColor="rgba(255,255,255,0.1)"
       />
-      <EditScreenInfo path="/screens/FoundScreen.tsx" />
+      <AnimalForm />
     </View>
   );
 }
