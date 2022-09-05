@@ -122,6 +122,8 @@ const styles = StyleSheet.create({
   button: {
     width: 250,
     backgroundColor: "transparent",
+    marginTop: 20,
+    marginBottom: 20,
     padding: 15,
     borderWidth: 1,
     borderColor: Colors.border,

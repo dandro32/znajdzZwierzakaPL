@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, ScrollView, Dimensions } from "react-native";
 import AnimalForm from "../components/AnimalForm";
 
 import { Text, View } from "../components/Themed";
@@ -8,15 +8,18 @@ export default function FoundScreen({
   navigation,
 }: RootTabScreenProps<"TabThree">) {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Znalazłem zwierzaka</Text>
-      <View
-        style={styles.separator}
-        lightColor="#eee"
-        darkColor="rgba(255,255,255,0.1)"
-      />
-      <AnimalForm />
-    </View>
+    <ScrollView>
+      <View style={styles.container}>
+        <Text style={styles.title}>Znalazłem zwierzaka</Text>
+        <View
+          style={styles.separator}
+          lightColor="#eee"
+          darkColor="rgba(255,255,255,0.1)"
+        />
+
+        <AnimalForm />
+      </View>
+    </ScrollView>
   );
 }
 
@@ -27,6 +30,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   title: {
+    marginTop: 20,
     fontSize: 20,
     fontWeight: "bold",
   },
