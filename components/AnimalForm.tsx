@@ -8,6 +8,7 @@ import {
 } from "react-native";
 import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
 import Colors from "../constants/Colors";
+import DateTimeSelector from "./DateTimeSelector";
 import Dropdown from "./Dropdown";
 import HorizontalRule from "./HorizontalRule";
 
@@ -30,6 +31,7 @@ const AnimalForm: FC = () => {
   const [title, setTitle] = useState("");
   const [additional, setAdditional] = useState("");
   const [dropdown, setDropdown] = useState("");
+  const [date, setDate] = useState(new Date());
 
   const handleDropdown = (name: string, value: string) => {
     console.log(name, value);
@@ -54,6 +56,9 @@ const AnimalForm: FC = () => {
         autoComplete="name"
         placeholderTextColor={Colors.text}
       />
+      <DateTimeSelector title="data" onChange={setDate} />
+      <DateTimeSelector title="czas" onChange={setDate} mode="time" />
+
       <Dropdown
         name="type"
         onChange={handleDropdown}
