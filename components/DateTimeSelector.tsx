@@ -2,9 +2,9 @@ import { FC, useState } from "react";
 import RNDateTimePicker, {
   DateTimePickerEvent,
 } from "@react-native-community/datetimepicker";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Text, TouchableHighlight } from "react-native";
 import Colors from "../constants/Colors";
-import FontAwesome from "@expo/vector-icons/FontAwesome";
+import { FontAwesome } from "@expo/vector-icons";
 
 export interface IDateTimePicker {
   mode?: "date" | "time";
@@ -29,16 +29,23 @@ const DateTimeSelector: FC<IDateTimePicker> = ({
     setOpen(false);
   };
 
+  const isTime = mode === "time";
+  const iconName = isTime ? "clock-o" : "calendar";
+  const transformedValue = isTime
+    ? value.toLocaleTimeString()
+    : value.toLocaleDateString();
+
   return (
     <View>
-      <Text style={styles.title}>{value.toISOString()}</Text>
-      <FontAwesome.Button
-        name={mode === "time" ? "clock-o" : "calendar"}
-        // backgroundColor="#3b5998"
-        onPress={openPicker}
-      >
-        {title}
-      </FontAwesome.Button>
+      <TouchableHighlight onPress={openPicker} style={styles.button}>
+        <View style={styles.buttonContainer}>
+          <Text
+            style={styles.buttonText}
+          >{`${title}: ${transformedValue}`}</Text>
+          <FontAwesome name={iconName} size={15} color={Colors.text} />
+        </View>
+      </TouchableHighlight>
+
       {isOpen && (
         <RNDateTimePicker value={value} onChange={handleDate} mode={mode} />
       )}
@@ -47,18 +54,23 @@ const DateTimeSelector: FC<IDateTimePicker> = ({
 };
 
 const styles = StyleSheet.create({
-  title: {
-    width: 225,
-    margin: 12,
-    borderRadius: 10,
+  buttonContainer: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    flexDirection: "row",
+  },
+  button: {
+    width: 230,
+    backgroundColor: "transparent",
+    padding: 10,
     borderWidth: 2,
     borderColor: Colors.border,
-    color: Colors.text,
-  },
-  item: {
-    color: Colors.text,
-    backgroundColor: Colors.background,
     borderRadius: 10,
+  },
+  buttonText: {
+    textTransform: "capitalize",
+    color: Colors.text,
   },
 });
 
